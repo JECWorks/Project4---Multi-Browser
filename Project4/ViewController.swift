@@ -57,7 +57,15 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
     }
     
     @IBAction func navigationClicked(_ sender: NSSegmentedControl){
-        
+        // make sure we have a web view selected
+        guard let selected = selectedWebView else { return }
+        if sender.selectedSegment == 0 {
+            // back was tapped
+            selected.goBack()
+        } else {
+            //forward was tapped
+            selected.goForward()
+        }
     }
 
     @IBAction func adjustRows(_ sender: NSSegmentedControl) {
